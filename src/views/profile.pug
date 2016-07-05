@@ -1,0 +1,99 @@
+extends ./navbar.pug
+
+block content
+	style.
+		body{
+		background: url(http://3.bp.blogspot.com/-bA3CYQg6ofk/UycCHKY2aiI/AAAAAAAAKeM/JYCcNSUzkMw/s1600/Guitar-HD-Wallpaper-13.jpg);  
+		}
+	head
+		title Profile
+	body
+		.ui.celled.grid
+			.row
+				.three.wide.column
+					.ui.card 
+						.image
+							img(src="http://img.freepik.com/free-vector/profile-music-notes-background_23-2147492175.jpg?size=338&ext=jpg")
+						.content
+							.header= usertje.userName
+							.meta
+								p Joined at
+								span.date= usertje.createdAt
+							.meta
+								p Email
+								span.email= usertje.email
+							.description Hoi is alles goed met jouw. Dit is mijn profiel ik ben nieuw hier.
+						.extra.content
+							a
+								i.user.icon 35 friends
+				.ten.wide.column
+					.ui.segment
+						.card.content
+							.ui.horizontal.list
+								.item
+									h3 Name
+									.ui.header= usertje.userName
+								.item
+									h3 Email
+									.ui.header= usertje.email
+								.item
+									h3 Joines us at
+									.ui.header= usertje.createdAt
+								.item
+									h3 Joines us at
+									.ui.header= usertje.createdAt	
+							.ui.horizontal.list
+								.item
+									h3 Name
+									.ui.header= usertje.userName
+								.item
+									h3 Email
+									.ui.header= usertje.email
+								.item
+									h3 Joines us at
+									.ui.header= usertje.createdAt
+								.item
+									h3 Joines us at
+									.ui.header= usertje.createdAt
+							.ui.horizontal.list
+								.item
+									h3 Name
+									.ui.header= usertje.userName
+								.item
+									h3 Email
+									.ui.header= usertje.email
+								.item
+									h3 Joines us at
+									.ui.header= usertje.createdAt
+								.item
+									h3 Joines us at
+									.ui.header= usertje.createdAt
+							.ui.horizontal.list
+								.item
+									h3 Name
+									.ui.header= usertje.userName
+								.item
+									h3 Email
+									.ui.header= usertje.email
+								.item
+									h3 Joines us at
+									.ui.header= usertje.createdAt
+								.item
+									h3 Joines us at
+									.ui.header= usertje.createdAt							
+				.three.wide.column
+			.row
+				.three.wide.column
+					.ui.card
+						.content
+							.header Description
+							.meta 2 days ago
+							.description
+								p Lorum ipsum Solas inverdida Lorum ipsum Solas inverdidaLorum ipsum Solas inverdidaLorum ipsum Solas inverdidaLorum ipsum Solas inverdidaLorum ipsum Solas inverdida olas inverdidaLorum ipsum Solas inverdidaLorum ipsum Solas inverdidaolas inverdidaLorum ipsum Solas inverdidaLorum ipsum Solas inverdidaolas inverdidaLorum ipsum Solas inverdidaLorum ipsum Solas inverdida
+				.ten.wide.column
+					p req.session.user.updatedAtreq.session.user.updatedAtreq.session.user.updatedAt
+				
+
+	// Body
+
+		

@@ -1,0 +1,57 @@
+----------------------------------------------------------------------------------
+X [Prepare layout for all pages so I know what I want it to look like]
+----------------------------------------------------------------------------------
+  [Prepare back end data flow, wich tables do I need, wich ones should belong to wich] 
+----------------------------------------------------------------------------------
+  [Create layout]
+	  -  [Create navbar file for whole site]
+	  -  [Create footer file for whole site]
+----------------------------------------------------------------------------------
+  [Create Login/registration page]
+	  -  [Create registration page]
+		  -  [Make sure all data is stored in my database]
+		  -  [Make sure all registrants get a unique primary key]
+		  -  [Make sure registered users cannot register again with the same email]
+		  -  [When all fields are filled in and submit button is pressed redirect to home page]
+	  -  [Create login form]
+	  	  -  [Create login form, email + password]
+	  	  -  [Make sure password is encrypted in database]
+	  	  -  [Create a link so new users can go to the registration page]
+	  	  -  [Redirect users to home page when logged in]
+------------------------------------------------------------------------------------
+  [Create Home page]
+ 	  -  [Implement the layout files]
+ 	  -  [Create small box with some information about the site]
+------------------------------------------------------------------------------------
+  [Create profile page]
+  	  -  [Create nice layout]
+  	  	  -  [Profile picture]
+  	  	  -  [General information: Country, City etc.]
+  	  	  -  [Music info: Instruments they play, Musicgenre, Gear]
+  	  	  -  [Create a box to display all posts]
+  	  	  -  [Create link to each post where u can comment, private message]
+  	  	  -  [Create a little box where you can display and play your own soundcloud songs]
+------------------------------------------------------------------------------------
+  [Create the find page]
+  	  -  [Create Three blocks all with a link to: Bands, jam sessions or gear]
+  	  	  -  [Create find band/bandplayer page]
+  	  	  	  -  [Create a search bar with auto complete]
+  	  	  	  -  [Create a box where first 20 results show + view more link that can collapse for more results]
+  	  	  	  -  [Create a link that will show that single post + info from poster and able tocomment/pm]
+  	  	  -  [Create find jam session page]
+  	  	  	  -  [Create a search bar with auto complete]
+  	  	  	  -  [Create a box where first 20 results show + view more link that can collapse for more results]
+  	  	  	  -  [Create a link that will show that single post + info from poster and able tpcomment/pm]
+  	  	  -  [Create fin gear page]
+  	  	  	  -  [Create a search bar with auto complete]
+  	  	  	  -  [Create a box where first 20 results show + view more link that can collapse for more results]
+  	  	  	  -  [Create a link that will show that single post + info from poster and able to comment/pm]
+-------------------------------------------------------------------------------------
+  [Create soundcloud page]
+  	  -  [Create search bar with auto complete]
+  	  -  [Display first 20 songs, and be able to play them there and have a link to their soundcloud page]
+  	  -  []
+-------------------------------------------------------------------------------------
+  [Create gigs page]*Only if I have time(API is very anoyingly from songkick, and they are bastards in general)*
+  	  -  [Create search bar with auto complete]
+  	  -  [Display first 20 hits, and redirect to site where tickets can be booked]
