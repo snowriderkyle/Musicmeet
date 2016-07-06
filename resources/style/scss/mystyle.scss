@@ -1,4 +1,5 @@
-/*
+body{
+
 h1{ 
 text-align: center;
 color: black;
@@ -6,8 +7,7 @@ color: black;
  h2 { 
 text-align: center;
 color: black;
- }
-
+ }}
 
 .ui.raised.very.paddedtext.container.segment{
   padding-top: 50px;
@@ -44,8 +44,7 @@ color: black;
     font-size: 16px;
     height: auto;
     padding: 10px;
-    @include box-sizing(border-box);
-
+   
     &:focus {
       z-index: 2;
     }
@@ -62,7 +61,7 @@ color: black;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-}
+
 
 .ui.three.column.grid{
       margin: 50px;
@@ -81,4 +80,3 @@ color: black;
   opacity: 0.3;
   border-color: black;
 }
-*/

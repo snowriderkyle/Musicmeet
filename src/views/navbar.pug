@@ -9,7 +9,7 @@ html.no-js(lang='en')
 		link(rel='stylesheet' href='style/bootstrap.min.css')
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin='anonymous')
 		link(rel='stylesheet', type='text/css', href='dist/semantic.min.css')
-		link(rel='stylesheet' href='style/mystyle.css')
+		link(rel='stylesheet' href='style/style.css')
 		script(src='semantic/dist/semantic.min.js')
 		script(src='assets/library/jquery.min.js')
 		script(src='../dist/components/visibility.js')
@@ -19,29 +19,6 @@ html.no-js(lang='en')
 		script(src='js/custom.js')
 		script(href='js/custom.js')
 	body
-		//Folowing Menu
-		.ui.fixed.large.top.fixed.hidden.menu
-			.ui.container
-				a.active.item Home
-					i.home.icon
-				a.item Profile
-					i.user.icon
-				a.item Find
-					i.search.icon
-				.right.menu
-					.item
-						a(href='/logout').ui.inverted.blue.button Log out
-					.item
-						a(href='#').ui.inverted.blue.button Sign Up
-		// Sidebar Menu
-		.ui.fixed.vertical.inverted.sidebar.menu
-			a.item Home
-			a.item Work
-			a.item Company
-			a.item Careers
-			a.item Login
-			a.item Signup
-		// Page Contents
 		.pusher
 			.ui.fixed.inverted.vertical.aligned.segment
 				.ui.container

@@ -48,6 +48,7 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.8",
     "map-stream": "0.0.6",
+    "node-sass": "^3.8.0",
     "pg": "^6.0.1",
     "promise": "^7.1.1",
     "pug": "^2.0.0-beta3",

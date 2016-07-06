@@ -8,6 +8,18 @@ const pg = require ('pg');
 const bodyParser = require('body-parser')
 var session = require ('express-session');
 var Promise = require ('promise');
+var sass = require('node-sass');
+
+//Set sass files
+sass.render({
+  file: 'resources/style/scss/mystyle.scss',
+}, function(err, result) { 
+  console.log(err, result)
+  fs.writeFile( 'resources/style/style.css', result.css.toString(), (err) =>{
+    if (err) throw err
+      console.log('Sass written to css')
+  });
+ });
 
 
 //set view engine and views
@@ -66,7 +78,7 @@ var Comment = sequelize.define('comment', {
 User.hasMany(Message);
 Message.belongsTo(User);
 Info.belongsTo(User);
-Comment.belonsTo(User);
+Comment.belongsTo(User);
 Message.hasMany(Comment);
 Comment.belongsTo(Message);
 User.hasMany(Comment);
@@ -154,6 +166,19 @@ app.get('/profile', function(req, res){
  	});
     console.log(req.session.user.updatedAt)
 };
+});
+
+//display info
+app.get('/info', function ( req, res ){
+  var user = req.session.user;
+  console.log(user)
+  if ( user === undefined){
+    res.redirect('/?message=' + encodeURIComponent("Please log in to view your profile."));
+  } else{
+  console.log('Index is displayed on localhost');
+  res.render('info');
+};
+
 });
 
 app.get('/logout', (req, res)=> {
