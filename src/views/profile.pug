@@ -8,67 +8,63 @@ block content
 	head
 		title Profile
 	body
-		.ui.celled.grid
+		.ui.stackable.grid
 			.row
 				.three.wide.column
 					.ui.card 
 						.image
 							img(src="http://img.freepik.com/free-vector/profile-music-notes-background_23-2147492175.jpg?size=338&ext=jpg")
 						.content
-							.header= usertje.userName
+							.header= user[0].username
+								h4 Joined in:
+									p= user[0].time
 							.meta
-								p Joined at
-								span.date= usertje.createdAt
+								h4 Email:
+								p= user[0].email
 							.meta
-								p Email
-								span.email= usertje.email
-							.description Hoi is alles goed met jouw. Dit is mijn profiel ik ben nieuw hier.
-						.extra.content
-							a
-								i.user.icon 35 friends
+								h4 Gender:
+								p= user[0].gender
 				.ten.wide.column
-					.ui.inverted.red.segment
+					.ui.segment
 						.card.content
 							.ui.horizontal.list
 								.item
 									h3 City
-									.ui.header
+									.ui.header= user[0].city
 								.item
 									h3 Country
-									.ui.header 
+									.ui.header= user[0].country 
 								.item
-									h3 Member since 
-									.ui.header= usertje.createdAt	
+									h3 Age
+									.ui.header= user[0].age
+							br
 							.ui.horizontal.list
 								.item
-									h3 Primary Instrument
-									.ui.header
+									h3 Instrument
+									.ui.header= user[0].mainInstrument
 								.item
 									h3 Can also play
-									.ui.header= usertje.email
+									.ui.header= user[0].otherInstrument
 								.item
 									h3 Looking for
-									.ui.header= usertje.createdAt
+									.ui.header= user[0].lookingFor
 								.item
 									h3 Genre
-									.ui.header= usertje.createdAt
+									.ui.header= user[0].genre
+							br
 							.ui.horizontal.list
 								.item
 									h3 Decription	
+									.ui.header= user[0].description
+							br
 							.ui.horizontal.list
 								.item
-									a(href='/info') Fill in your info
+									h3
+										a.centered(href='/info') Click here to fill in your info
 				.three.wide.column
 			.row
-				.three.wide.column
-					.ui.card
-						.content
-							.header Description
-							.meta 2 days ago
-							.description
-								p Lorum ipsum Solas inverdida Lorum ipsum Solas inverdidaLorum ipsum Solas inverdidaLorum ipsum Solas inverdidaLorum ipsum Solas inverdidaLorum ipsum Solas inverdida olas inverdidaLorum ipsum Solas inverdidaLorum ipsum Solas inverdidaolas inverdidaLorum ipsum Solas inverdidaLorum ipsum Solas inverdidaolas inverdidaLorum ipsum Solas inverdidaLorum ipsum Solas inverdida
 				.ten.wide.column
-					p req.session.user.updatedAtreq.session.user.updatedAtreq.session.user.updatedAt
+					p 
 				
 
 	// Body

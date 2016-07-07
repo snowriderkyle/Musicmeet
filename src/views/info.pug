@@ -8,3 +8,17 @@ block content
 	head
 		title Profile
 	body
+		.wrapper
+			form.form-signin(action='/addInfo', method='post' )
+				h2.form-signin-heading Please fill out your info.
+				input.form-control(type='text', name='city', placeholder='Current city', autofocus='')
+				input.form-control(type='text', name='country', placeholder='Current country')
+				input.form-control(type='text', name='mainInstrument', placeholder='Your first instrument of choice')
+				input.form-control(type='text', name='otherInstrument', placeholder='Can also play')
+				input.form-control(type='text', name='genre', placeholder='Genre of music I play')
+				input.form-control(type='text', name='gear', placeholder='My gear')
+				input.form-control(type='text', name='lookingFor', placeholder="I'm looking for")
+				input.form-control(type='text', name='gender', placeholder='Gender')
+				input.form-control(type='text', name='age', placeholder='Age')
+				textarea.form-control(type='text' rows='3', name='description', placeholder='Short summery of myself')
+				button.ui.inverted.blue.button.btn.btn-lg.btn-primary.btn-block(type='submit') Submit

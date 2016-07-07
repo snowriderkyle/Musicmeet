@@ -7,7 +7,22 @@ color: black;
  h2 { 
 text-align: center;
 color: black;
- }}
+ }
+ .ui.segment{
+  background-color: black;
+  border-color: red;
+  margin: 20px;
+  color: red;
+    .card.content{
+      padding: 35px;
+    }
+    .ui.header{
+      color: white;
+
+  }
+ }
+
+}
 
 .ui.raised.very.paddedtext.container.segment{
   padding-top: 50px;
@@ -79,4 +94,13 @@ color: black;
 .ui.inverted.red.segment{
   opacity: 0.3;
   border-color: black;
+}
+body{
+.ui.stackable.grid{
+  .row{
+    .three.wide.column{
+      margin-left: 30px;
+    }
+    }
+  }
 }

@@ -9,6 +9,7 @@ const bodyParser = require('body-parser')
 var session = require ('express-session');
 var Promise = require ('promise');
 var sass = require('node-sass');
+const moment = require('moment');
 
 //Set sass files
 sass.render({
@@ -49,20 +50,19 @@ app.use (session({
 var User = sequelize.define('user', {
   userName: Sequelize.STRING,
   email: Sequelize.STRING,
-  password: Sequelize.STRING
-});
-
-var Info = sequelize.define('info', {
-	city: Sequelize.TEXT,
-	country: Sequelize.TEXT,
-	age: Sequelize.INTEGER,
-	gender: Sequelize.TEXT,
-	mainInstrument: Sequelize.TEXT,
-	otherInstrument: Sequelize.TEXT,
-	gear: Sequelize.TEXT,
-	lookingFor: Sequelize.TEXT,
-	description: Sequelize.TEXT
-});
+  password: Sequelize.STRING,
+  city: Sequelize.TEXT,
+  country: Sequelize.TEXT,
+  age: Sequelize.INTEGER,
+  gender: Sequelize.TEXT,
+  mainInstrument: Sequelize.TEXT,
+  otherInstrument: Sequelize.TEXT,
+  gear: Sequelize.TEXT,
+  lookingFor: Sequelize.TEXT,
+  description: Sequelize.TEXT,
+  genre: Sequelize.TEXT,
+  
+  });
 
 var Message = sequelize.define('message', {
 	title: Sequelize.TEXT,
@@ -77,7 +77,6 @@ var Comment = sequelize.define('comment', {
 //Set database structure
 User.hasMany(Message);
 Message.belongsTo(User);
-Info.belongsTo(User);
 Comment.belongsTo(User);
 Message.hasMany(Comment);
 Comment.belongsTo(Message);
@@ -96,11 +95,7 @@ app.get('/navbar.pug', function ( req, res ){
   console.log('Index is displayed on localhost');
 	res.render('navbar');
 });
-//get navbar for each page
-app.get('/nav2..pug', function ( req, res ){
-  console.log('Index is displayed on localhost');
-	res.render('navbar');
-});
+
 //verify logindata user
 app.post('/login', function ( req, res ) {
   if (req.body.loginEmail.length === 0){
@@ -134,9 +129,9 @@ app.get('/newuser', function ( req, res ){
   console.log('Registration page is displayed on localhost');
 	res.render('newUser');
 });
+
 // push user info to database
 app.post('/register', function( req, res ){
-	console.log(req.body.email)
   User.create({
     userName: req.body.username,
     email: req.body.email,
@@ -146,9 +141,10 @@ app.post('/register', function( req, res ){
 });
 });
 
+
 app.get('/profile', function(req, res){
   var user = req.session.user;
-  console.log(user)
+  
   if ( user === undefined){
     res.redirect('/?message=' + encodeURIComponent("Please log in to view your profile."));
   } 
@@ -158,13 +154,36 @@ app.get('/profile', function(req, res){
  			id: req.session.user.id
  		}
  	}).then(function(profile){
- 		res.render('profile',{
- 			usertje: user,
- 			sessionuser: user,
- 			created: req.session.user.updatedAt
+  
+    var user = profile.map((user)=>{
+      var time = user.dataValues.createdAt
+      return {
+        id: user.dataValues.id,
+        username: user.dataValues.userName,
+        email: user.dataValues.email,
+        password: user.dataValues.password,
+        city: user.dataValues.city,
+        country: user.dataValues.country,
+        age: user.dataValues.age,
+        gender: user.dataValues.gender,
+        mainInstrument: user.dataValues.mainInstrument,
+        otherInstrument: user.dataValues.otherInstrument,
+        gear: user.dataValues.gear,
+        lookingFor: user.dataValues.lookingFor,
+        description: user.dataValues.description,
+        genre: user.dataValues.genre,
+        time: moment(time).format('MMM Do YY')
+      }
+    console.log(time)
+    })
+ 		 res.render('profile',{
+      user: user
+     })
+ 		
+
  		});
- 	});
-    console.log(req.session.user.updatedAt)
+ 	
+    
 };
 });
 
@@ -179,6 +198,30 @@ app.get('/info', function ( req, res ){
   res.render('info');
 };
 
+app.post('/addInfo', function ( req, res){
+    User.findOne({
+    where:{
+      id: req.session.user.id
+    }
+  }).then(function(User){
+      console.log(User)
+    User.updateAttributes({
+      city: req.body.city,
+      country: req.body.country,
+      age: req.body.age,
+      gender: req.body.gender,
+      mainInstrument: req.body.mainInstrument,
+      otherInstrument: req.body.otherInstrument,
+      gear: req.body.gear,
+      lookingFor: req.body.lookingFor,
+      description: req.body.description,
+      genre: req.body.genre
+      }).then(function(){
+        res.redirect('profile');
+            })
+ });
+
+})
 });
 
 app.get('/logout', (req, res)=> {
@@ -186,8 +229,10 @@ app.get('/logout', (req, res)=> {
   req.session.destroy(function(error){
     if(error){
       throw error;
+    }else{ 
+      res.render('index')
     }
-    res.redirect('/?/message=' + encodeURIComponent("Succesfully logged out!"));
+    
   });
 });
 

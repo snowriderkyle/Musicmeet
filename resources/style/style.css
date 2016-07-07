@@ -6,6 +6,16 @@ body h2 {
   text-align: center;
   color: black; }
 
+body .ui.segment {
+  background-color: black;
+  border-color: red;
+  margin: 20px;
+  color: red; }
+  body .ui.segment .card.content {
+    padding: 35px; }
+  body .ui.segment .ui.header {
+    color: white; }
+
 .ui.raised.very.paddedtext.container.segment {
   padding-top: 50px;
   margin-top: 200px;
@@ -61,3 +71,6 @@ input[type="password"] {
 .ui.inverted.red.segment {
   opacity: 0.3;
   border-color: black; }
+
+body .ui.stackable.grid .row .three.wide.column {
+  margin-left: 30px; }
