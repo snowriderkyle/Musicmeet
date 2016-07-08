@@ -272,7 +272,7 @@ app.get('/logout', (req, res)=> {
 
 
 sequelize.sync({force: false}).then(function () {
-var server = app.listen(3000, function () {
+var server = app.listen(4000, function () {
 		console.log('Example app listening on port: ' + server.address().port);
 	});
 });
