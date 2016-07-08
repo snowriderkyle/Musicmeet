@@ -6,9 +6,9 @@ const fs = require('fs')
 const Sequelize = require ('sequelize');
 const pg = require ('pg');
 const bodyParser = require('body-parser')
-var session = require ('express-session');
-var Promise = require ('promise');
-var sass = require('node-sass');
+const session = require ('express-session');
+const Promise = require ('promise');
+const sass = require('node-sass');
 const moment = require('moment');
 
 //Set sass files
@@ -70,7 +70,6 @@ var Message = sequelize.define('message', {
 });
 
 var Comment = sequelize.define('comment', {
-	title: Sequelize.TEXT,
 	body: Sequelize.TEXT
 })
 
@@ -152,40 +151,43 @@ app.get('/profile', function(req, res){
  	User.findAll({
  		where:{
  			id: req.session.user.id
- 		}
+ 		},include: [
+    { model: Message }]
  	}).then(function(profile){
-  
-    var user = profile.map((user)=>{
-      var time = user.dataValues.createdAt
-      return {
-        id: user.dataValues.id,
-        username: user.dataValues.userName,
-        email: user.dataValues.email,
-        password: user.dataValues.password,
-        city: user.dataValues.city,
-        country: user.dataValues.country,
-        age: user.dataValues.age,
-        gender: user.dataValues.gender,
-        mainInstrument: user.dataValues.mainInstrument,
-        otherInstrument: user.dataValues.otherInstrument,
-        gear: user.dataValues.gear,
-        lookingFor: user.dataValues.lookingFor,
-        description: user.dataValues.description,
-        genre: user.dataValues.genre,
-        time: moment(time).format('MMM Do YY')
-      }
-    console.log(time)
-    })
- 		 res.render('profile',{
-      user: user
+    // res.send(profile[0])
+    // var user = profile.map((user)=>{
+    //   var time = user.dataValues.createdAt
+    //   return {
+    //     id: user.dataValues.id,
+    //     username: user.dataValues.userName,
+    //     email: user.dataValues.email,
+    //     password: user.dataValues.password,
+    //     city: user.dataValues.city,
+    //     country: user.dataValues.country,
+    //     age: user.dataValues.age,
+    //     gender: user.dataValues.gender,
+    //     mainInstrument: user.dataValues.mainInstrument,
+    //     otherInstrument: user.dataValues.otherInstrument,
+    //     gear: user.dataValues.gear,
+    //     lookingFor: user.dataValues.lookingFor,
+    //     description: user.dataValues.description,
+    //     genre: user.dataValues.genre,
+    //     time: moment(time).format('MMM Do YY'),
+    //     email: user.dataValues.email,
+    //     messages: user.dataValues.messages
+    //   }
+    res.render('profile',{
+      user: profile[0]
      })
- 		
-
- 		});
+    })
+ 		 
+    // res.send(profile)
+    console.log('HOI')
+ 		};
  	
     
-};
 });
+
 
 //display info
 app.get('/info', function ( req, res ){
@@ -216,6 +218,35 @@ app.post('/addInfo', function ( req, res){
       lookingFor: req.body.lookingFor,
       description: req.body.description,
       genre: req.body.genre
+      }).then(function(){
+        res.redirect('profile');
+            })
+ });
+
+})
+});
+
+//display Message
+app.get('/message', function ( req, res ){
+  var user = req.session.user;
+  console.log(user)
+  if ( user === undefined){
+    res.redirect('/?message=' + encodeURIComponent("Please log in to view your profile."));
+  } else{
+  console.log('Index is displayed on localhost');
+  res.render('message');
+};
+
+app.post('/addmessage', function ( req, res){
+    User.findOne({
+    where:{
+      id: req.session.user.id
+    }
+  }).then(function(User){
+      console.log(User)
+    User.createMessage({
+      title: req.body.title,
+      body: req.body.body
       }).then(function(){
         res.redirect('profile');
             })

@@ -72,5 +72,8 @@ input[type="password"] {
   opacity: 0.3;
   border-color: black; }
 
+body .ui.stackable.grid .row .ten.wide.column .ui.segment .card.content {
+  text-align: center; }
+
 body .ui.stackable.grid .row .three.wide.column {
   margin-left: 30px; }

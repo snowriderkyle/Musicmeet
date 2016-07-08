@@ -98,6 +98,14 @@ color: black;
 body{
 .ui.stackable.grid{
   .row{
+    .ten.wide.column{
+      .ui.segment{
+        .card.content{
+          text-align: center;
+        }
+      }
+
+    }
     .three.wide.column{
       margin-left: 30px;
     }

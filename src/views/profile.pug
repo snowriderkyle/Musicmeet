@@ -13,49 +13,51 @@ block content
 				.three.wide.column
 					.ui.card 
 						.image
-							img(src="http://img.freepik.com/free-vector/profile-music-notes-background_23-2147492175.jpg?size=338&ext=jpg")
+							img(src="http://wallpapercave.com/wp/9x6BIYO.jpg")
 						.content
-							.header= user[0].username
+							.header= user.userName
 								h4 Joined in:
-									p= user[0].time
-							.meta
+									p= user.time
+							br
+							.header
 								h4 Email:
-								p= user[0].email
-							.meta
+										p= user.email
+							br
+							.header
 								h4 Gender:
-								p= user[0].gender
+										p= user.gender
 				.ten.wide.column
 					.ui.segment
 						.card.content
 							.ui.horizontal.list
 								.item
 									h3 City
-									.ui.header= user[0].city
+									.ui.header= user.city
 								.item
 									h3 Country
-									.ui.header= user[0].country 
+									.ui.header= user.country 
 								.item
 									h3 Age
-									.ui.header= user[0].age
+									.ui.header= user.age
 							br
 							.ui.horizontal.list
 								.item
 									h3 Instrument
-									.ui.header= user[0].mainInstrument
+									.ui.header= user.mainInstrument
 								.item
 									h3 Can also play
-									.ui.header= user[0].otherInstrument
+									.ui.header= user.otherInstrument
 								.item
 									h3 Looking for
-									.ui.header= user[0].lookingFor
+									.ui.header= user.lookingFor
 								.item
 									h3 Genre
-									.ui.header= user[0].genre
+									.ui.header= user.genre
 							br
 							.ui.horizontal.list
 								.item
 									h3 Decription	
-									.ui.header= user[0].description
+									.ui.header= user.description
 							br
 							.ui.horizontal.list
 								.item
@@ -63,8 +65,27 @@ block content
 										a.centered(href='/info') Click here to fill in your info
 				.three.wide.column
 			.row
+				.three.wide.column
 				.ten.wide.column
-					p 
+					.ui.segment
+						.card.content
+							each message in user.messages
+								.item
+									h3 Title
+									.ui.header= message.title
+								br
+								br
+								.item
+									h3 Message 
+									.ui.header= message.body
+							
+								form(action='/addmessage', method='post' )
+									h3.form-signin-heading Add a comment
+									textarea.form-control(type='text' rows='3', name='body', placeholder='Find your new band/music partner')
+									button.ui.inverted.blue.button.btn.btn-lg.btn-primary.btn-block(type='submit') Submit
+							.item
+								h3
+									a.centered(href='/message') Click here to create a message
 				
 
 	// Body

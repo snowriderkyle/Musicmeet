@@ -1,0 +1,16 @@
+extends ./navbar.pug
+
+block content
+	style.
+		body{
+		background: url(http://3.bp.blogspot.com/-bA3CYQg6ofk/UycCHKY2aiI/AAAAAAAAKeM/JYCcNSUzkMw/s1600/Guitar-HD-Wallpaper-13.jpg);  
+		}
+	head
+		title message
+	body
+		.wrapper
+			form.form-signin(action='/addmessage', method='post' )
+				h2.form-signin-heading Create your own message
+				input.form-control(type='text', name='title', placeholder='Title', autofocus='')
+				textarea.form-control(type='text' rows='8', name='body', placeholder='Find your new band/music partner')
+				button.ui.inverted.blue.button.btn.btn-lg.btn-primary.btn-block(type='submit') Submit
